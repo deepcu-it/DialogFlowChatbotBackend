@@ -1,0 +1,4 @@
+node_modules
+.env
+log-fetch-key.json
+package-lock.json
