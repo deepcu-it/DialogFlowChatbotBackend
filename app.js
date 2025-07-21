@@ -8,6 +8,8 @@ import cors from 'cors';
 import connectToMongoDB from "./databases/MongoDBConnection.js";
 
 connectToMongoDB();
+import { initializeDB } from './databases/mysqlConnection.js';
+//await initializeDB();
 
 const app = express();
 
@@ -23,8 +25,10 @@ app.use(express.json());
 // Application routes
 import userRoutes from './routes/userRoutes.js';
 import webhookRoutes from './routes/webhookRoutes.js';
+import chatRoutes from './routes/mysqlRoutes.js';
 app.use("/user", userRoutes);
 app.use('/webhook', webhookRoutes);
+app.use('/chat', chatRoutes);
 
 
 app.listen(process.env.PORT, () => {
