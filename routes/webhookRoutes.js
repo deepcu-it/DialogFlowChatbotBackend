@@ -7,38 +7,9 @@ import path from "path";
 import { sendEmail } from "../utils/sendEmail.js";
 import { getChatFromGoogleLogs } from "../utils/getChatFromGoogleLogs.js";
 import { summarizeChat } from "../utils/summarizeChat.js";
-import { text } from "stream/consumers";
-
 const router = express.Router();
 
 router.route("/check").get(checkWebhook);
-router.route("/route").post((req, res) => {
-    console.log("Webhook route hit");
-
-    // return res.status(200).json({
-    //     "fulfillmentResponse": {
-    //         "messages": [
-    //             {
-    //                 "text": {
-    //                     "text": [
-    //                         "This is a response from the webhook.",
-    //                     ]
-    //                 }
-    //             },
-    //             {
-    //                 "text": {
-    //                     "text": [
-    //                         "This is another response from the webhook.",    
-    //                     ]
-    //                 }
-    //             }
-    //         ]
-    //     }
-    // });
-
-    return sendDialogFlowResponse(res, ["Webhook route hit successfully."]);
-});
-
 
 
 router.post("/fetchlogs-summarize-sendEmail", async (req, res) => {
